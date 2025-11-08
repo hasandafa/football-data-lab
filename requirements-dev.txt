@@ -1,0 +1,17 @@
+# Code Quality
+black
+flake8
+isort
+
+# Testing
+pytest
+pytest-cov
+
+# Debugging
+ipdb
+
+# Git Hooks
+pre-commit
+
+# Type Checking (optional)
+mypy

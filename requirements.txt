@@ -1,0 +1,30 @@
+# Core Data Processing
+numpy
+pandas
+scipy
+
+# Data Generation
+faker
+
+# Visualization
+matplotlib
+seaborn
+plotly
+
+# Machine Learning
+scikit-learn
+xgboost
+
+# Dashboard
+streamlit
+
+# Notebooks
+jupyter
+ipykernel
+notebook
+
+# Utilities
+openpyxl
+python-dateutil
+tqdm
+python-dotenv
