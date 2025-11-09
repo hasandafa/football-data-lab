@@ -247,9 +247,9 @@ NATIONALITIES = [
     {"name": "Ivorian", "weight": 0.018, "locale": "fr_FR"},
     {"name": "Ghanaian", "weight": 0.015, "locale": "en_GB"},
     {"name": "Cameroonian", "weight": 0.015, "locale": "fr_FR"},
-    {"name": "Egyptian", "weight": 0.015, "locale": "ar_EG"},
-    {"name": "Moroccan", "weight": 0.012, "locale": "ar_EG"},
-    {"name": "Algerian", "weight": 0.010, "locale": "ar_EG"},
+    {"name": "Egyptian", "weight": 0.015, "locale": "ar_SA"},
+    {"name": "Moroccan", "weight": 0.012, "locale": "ar_SA"},
+    {"name": "Algerian", "weight": 0.010, "locale": "ar_SA"},
     {"name": "South African", "weight": 0.008, "locale": "en_GB"},  # Use English
     {"name": "Malian", "weight": 0.008, "locale": "fr_FR"},
     
@@ -258,7 +258,7 @@ NATIONALITIES = [
     {"name": "Korean", "weight": 0.021, "locale": "ko_KR"},
     {"name": "Indonesian", "weight": 0.018, "locale": "id_ID"},  # 🇮🇩
     {"name": "Australian", "weight": 0.012, "locale": "en_AU"},
-    {"name": "Iranian", "weight": 0.010, "locale": "fa_IR"},
+    {"name": "Iranian", "weight": 0.010, "locale": "ar_SA"},
     {"name": "Saudi Arabian", "weight": 0.015, "locale": "ar_SA"},
     {"name": "Chinese", "weight": 0.007, "locale": "zh_CN"},
     

@@ -207,8 +207,11 @@ def generate_player_potential(current_ability: float, age: int) -> float:
         potential = current_ability + random.uniform(0, 3)
     else:
         # Older players unlikely to improve much
-        potential = current_ability + random.uniform(-5, 2)
+        potential = current_ability + random.uniform(-2, 1)
     
+     # Ensure potential is NEVER lower than current ability
+    potential = max(current_ability, potential)
+
     return normalize_rating(potential)
 
 
