@@ -52,7 +52,7 @@ football-data-lab/
 │   │   ├── staff.csv
 │   │   ├── transfer_history.csv
 │   │   └── youth_academy.csv
-│   └── processed/                    
+│   └── processed/                    # Cleaned and processed data
 │
 ├── notebooks/                        # Jupyter notebooks for analysis
 │   ├── 01_exploratory_data_analysis.ipynb
@@ -104,17 +104,120 @@ cd football-data-lab
 pip install -r requirements.txt
 ```
 
-### 3. Explore the Notebooks
+### 3. Generate Synthetic Data
+**IMPORTANT:** Before exploring notebooks or running the dashboard, you need to generate the synthetic football data first!
+
+```bash
+python generate_data.py
+```
+
+This script will generate all required data files in `data/raw/`:
+- ✅ **players.csv** - 479 players with complete attributes
+- ✅ **clubs.csv** - 20 Premier League clubs  
+- ✅ **matches_2024_25.csv** - 380 matches with results
+- ✅ **youth_academy.csv** - 100 youth prospects
+- ✅ **league_table_2024_25.csv** - Current standings
+- ✅ **staff.csv** - Managers and coaching staff
+- ✅ **seasons.csv** - Season information
+- ✅ **transfer_history.csv** - Historical transfers
+- ✅ **league_info.csv** - League configuration
+
+**Generation time:** ~30-60 seconds  
+**Data quality:** Realistic distributions using advanced algorithms in `src/` modules
+
+### 4. Explore the Notebooks
 ```bash
 jupyter notebook
 ```
 Navigate to `notebooks/` and start with `01_exploratory_data_analysis.ipynb`
 
-### 4. Run the Dashboard
+### 5. Run the Dashboard
 ```bash
-streamlit run dashboard/app.py
+cd dashboard
+streamlit run app.py
 ```
 Dashboard opens at `http://localhost:8501` 🎉
+
+---
+
+## 📁 Data Generation Architecture
+
+The project uses a modular data generation system located in the `src/` directory:
+
+### Core Modules (`src/`)
+
+```
+src/
+├── config.py              # All configuration and constants
+├── utils.py               # Helper functions (names, IDs, calculations)
+├── leagues.py             # League and season structure
+├── clubs.py               # Club generation with tiers
+├── players.py             # Player generation with realistic attributes
+├── staff.py               # Manager and coaching staff
+├── youth_academy.py       # Youth prospects generation
+├── matches.py             # Match fixtures and simulation
+└── transfers.py           # Transfer history generation
+```
+
+### How Data Generation Works
+
+1. **Configuration** (`config.py`)
+   - Defines all parameters: league structure, squad sizes, age distributions
+   - Sets attribute ranges by position (GK, DEF, MID, FWD)
+   - Configures realistic market values and wages
+
+2. **League & Clubs** (`leagues.py`, `clubs.py`)
+   - Creates 20-team league with 3 tiers (top/mid/lower)
+   - Generates club names, stadiums, budgets, reputations
+   - Assigns playing styles and formations
+
+3. **Players** (`players.py`)
+   - Generates 23-30 players per club
+   - Position-specific attributes (physical, technical, mental)
+   - Age-based attribute adjustments
+   - Realistic potential calculations
+   - **Market values up to £200M** (realistic 2024/25 economics)
+
+4. **Youth Academy** (`youth_academy.py`)
+   - Creates 5 youth players (16-17 years) per club
+   - Elite prospects with high potential (80+)
+   - Promotion readiness assessment
+
+5. **Matches** (`matches.py`)
+   - Generates double round-robin fixtures (38 matches per team)
+   - Simulates all 380 matches using team strength
+   - Calculates league table with standings
+
+6. **Staff & Transfers** (`staff.py`, `transfers.py`)
+   - Generates managers and coaching staff
+   - Creates historical transfer records
+
+### Key Features of Generated Data
+
+✅ **Realistic Distributions:**
+- Player ages follow professional football patterns
+- Attributes vary by position and age
+- Market values reflect 2024/25 economics
+
+✅ **Smart Calculations:**
+- Overall ratings use position-weighted attributes
+- Market values consider age, potential, and position
+- Wages scale with player value
+
+✅ **Quality Control:**
+- Top-tier clubs get better players (rating adjustment)
+- Nationality weights match global football demographics
+- Indonesian players included (🇮🇩 representation!)
+
+### Customizing Data Generation
+
+Edit `src/config.py` to adjust:
+- Number of teams, squad sizes
+- Age distributions, attribute ranges  
+- Market value calculations
+- Nationalities and weights
+
+Then re-run `python generate_data.py` to regenerate with new settings!
 
 ---
 
@@ -371,3 +474,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 [![Liverpool FC](https://img.shields.io/badge/Liverpool_FC-You'll_Never_Walk_Alone-C8102E?style=for-the-badge&logo=liverpool)](https://www.liverpoolfc.com)
 
 </div>
+
+
+
+
